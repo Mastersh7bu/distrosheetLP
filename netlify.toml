@@ -1,0 +1,3 @@
+# Static files only. Netlify's free plan can publish this with no build command.
+[build]
+  publish = "."
