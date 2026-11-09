@@ -6,17 +6,17 @@
     <title>DistroSheet — Take your sheet to the next level</title>
     <meta
       name="description"
-      content="DistroSheet is a Chrome extension that sends each client their own Google Sheet, then publishes your updates without overwriting the cells and tabs they own."
+      content="DistroSheet delivers your Google Sheet to each recipient and keeps their files up to date when you improve yours, without overwriting the cells and tabs they own."
     />
     <meta name="theme-color" content="#137333" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta property="og:title" content="DistroSheet — Take your sheet to the next level" />
     <meta
       property="og:description"
-      content="Send each client their own copy of a Google Sheet, then publish updates without wiping what they typed."
+      content="Improve the sheet. DistroSheet delivers it to each recipient and updates their files when yours changes."
     />
     <meta property="og:type" content="website" />
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles.css?v=11" />
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -25,8 +25,9 @@
       <div class="wrap header-inner">
         <a class="brand" href="#top">
           <span class="brand-mark" aria-hidden="true">
-            <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor">
-              <path d="M3 4.5A1.5 1.5 0 014.5 3h11A1.5 1.5 0 0117 4.5v11a1.5 1.5 0 01-1.5 1.5h-11A1.5 1.5 0 013 15.5v-11zM4.5 4.5v3h4v-3h-4zm5.5 0v3h5.5v-3H10zm5.5 4.5H10v3h5.5V9zm0 4.5H10v2h5.5v-2zm-7 2v-2h-4v2h4zm-4-3.5h4V9h-4v3z" />
+            <svg viewBox="0 0 16 16" width="18" height="18" fill="none" aria-hidden="true">
+              <rect x="2" y="2" width="12" height="12" rx="1.75" stroke="#fff" stroke-width="1.5"/>
+              <path d="M2 6h12M2 10h12M8 2v12" stroke="#fff" stroke-width="1.5"/>
             </svg>
           </span>
           <span class="brand-name">DistroSheet</span>
@@ -48,6 +49,7 @@
         <nav id="site-nav" class="nav" data-menu>
           <a href="#values">Values</a>
           <a href="#features">Features</a>
+          <a href="#use-cases">Use cases</a>
           <a href="#pricing">Pricing</a>
           <a class="nav-contact" href="#contact">Contact support</a>
         </nav>
@@ -61,26 +63,41 @@
             <p class="kicker">Chrome extension for Google Sheets</p>
             <h1>Take your sheet to the next level.</h1>
             <p class="lede">
-              DistroSheet sends each client their own copy of your spreadsheet,
-              then publishes your changes without overwriting the cells and tabs
-              they own.
+              Improve the sheet you already use. DistroSheet delivers it to each
+              recipient, then updates their files when yours changes — without
+              overwriting the cells and tabs they own.
             </p>
             <div class="hero-actions">
               <a class="button button-primary" href="#features">See what it does</a>
               <a class="button button-secondary" href="#pricing">View pricing</a>
             </div>
             <ul class="facts">
-              <li>Send a copy</li>
-              <li>Protect their cells</li>
-              <li>Publish the rest</li>
+              <li>You improve the sheet</li>
+              <li>We deliver it</li>
+              <li>We handle the updates</li>
             </ul>
           </div>
 
+          <div class="hero-stage" data-routes>
+            <svg class="routes" aria-hidden="true"></svg>
+            <div class="project" data-project>
+              <span class="brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 16 16" width="18" height="18" fill="none">
+                  <rect x="2" y="2" width="12" height="12" rx="1.75" stroke="#fff" stroke-width="1.5"/>
+                  <path d="M2 6h12M2 10h12M8 2v12" stroke="#fff" stroke-width="1.5"/>
+                </svg>
+              </span>
+              <span>
+                <small>Your sheet</small>
+                <strong data-sheet-name>Client tracker</strong>
+              </span>
+            </div>
           <div class="mock" data-mock aria-hidden="false">
             <div class="mock-bar">
               <span class="brand-mark" aria-hidden="true">
-                <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor">
-                  <path d="M3 4.5A1.5 1.5 0 014.5 3h11A1.5 1.5 0 0117 4.5v11a1.5 1.5 0 01-1.5 1.5h-11A1.5 1.5 0 013 15.5v-11zM4.5 4.5v3h4v-3h-4zm5.5 0v3h5.5v-3H10zm5.5 4.5H10v3h5.5V9zm0 4.5H10v2h5.5v-2zm-7 2v-2h-4v2h4zm-4-3.5h4V9h-4v3z" />
+                <svg viewBox="0 0 16 16" width="18" height="18" fill="none" aria-hidden="true">
+                  <rect x="2" y="2" width="12" height="12" rx="1.75" stroke="#fff" stroke-width="1.5"/>
+                  <path d="M2 6h12M2 10h12M8 2v12" stroke="#fff" stroke-width="1.5"/>
                 </svg>
               </span>
               <div>
@@ -99,10 +116,10 @@
 
               <div class="segment" role="tablist" aria-label="Preview of the extension">
                 <button type="button" role="tab" data-mock-tab="send" aria-selected="true">
-                  Send copy
+                  Send file
                 </button>
                 <button type="button" role="tab" data-mock-tab="publish" aria-selected="false">
-                  Publish
+                  Update
                 </button>
               </div>
 
@@ -110,16 +127,51 @@
                 <p>Client email</p>
                 <div class="fake-field">
                   <span>client@company.com</span>
-                  <b>Send copy</b>
+                  <b>Send file</b>
                 </div>
               </div>
 
               <div class="panel" role="tabpanel" data-mock-panel="publish" hidden>
-                <p>Publish to everyone you’ve shared with</p>
+                <p>Update everyone who already has the file</p>
                 <span class="publish-note">Tabs like _engine stay untouched.</span>
-                <span class="publish-go">Publish update <em>All clients</em></span>
+                <span class="publish-go">Deliver update <em>All recipients</em></span>
               </div>
             </div>
+          </div>
+            <ul class="recipients" aria-hidden="true">
+              <li data-person data-slot="team">
+                <span class="avatar">
+                  <svg viewBox="0 0 20 20" width="14" height="14" fill="currentColor">
+                    <path d="M10 9.25a2.75 2.75 0 100-5.5 2.75 2.75 0 000 5.5zM4.75 16.25a5.25 5.25 0 0110.5 0 .75.75 0 01-.75.75h-9a.75.75 0 01-.75-.75z"/>
+                  </svg>
+                </span>
+                <span class="who">Team</span>
+              </li>
+              <li data-person data-slot="client">
+                <span class="avatar">
+                  <svg viewBox="0 0 20 20" width="14" height="14" fill="currentColor">
+                    <path d="M10 9.25a2.75 2.75 0 100-5.5 2.75 2.75 0 000 5.5zM4.75 16.25a5.25 5.25 0 0110.5 0 .75.75 0 01-.75.75h-9a.75.75 0 01-.75-.75z"/>
+                  </svg>
+                </span>
+                <span class="who">Client</span>
+              </li>
+              <li data-person data-slot="users">
+                <span class="avatar">
+                  <svg viewBox="0 0 20 20" width="14" height="14" fill="currentColor">
+                    <path d="M10 9.25a2.75 2.75 0 100-5.5 2.75 2.75 0 000 5.5zM4.75 16.25a5.25 5.25 0 0110.5 0 .75.75 0 01-.75.75h-9a.75.75 0 01-.75-.75z"/>
+                  </svg>
+                </span>
+                <span class="who">Users</span>
+              </li>
+              <li data-person data-slot="followers">
+                <span class="avatar">
+                  <svg viewBox="0 0 20 20" width="14" height="14" fill="currentColor">
+                    <path d="M10 9.25a2.75 2.75 0 100-5.5 2.75 2.75 0 000 5.5zM4.75 16.25a5.25 5.25 0 0110.5 0 .75.75 0 01-.75.75h-9a.75.75 0 01-.75-.75z"/>
+                  </svg>
+                </span>
+                <span class="who">Followers</span>
+              </li>
+            </ul>
           </div>
         </div>
       </section>
@@ -128,35 +180,35 @@
         <div class="wrap">
           <div class="section-head">
             <p class="kicker">Values</p>
-            <h2>One source sheet. A copy for every client.</h2>
+            <h2>You improve the sheet. We deliver it.</h2>
             <p>
-              DistroSheet keeps the work in Google Sheets. You stay on the file
-              you already trust, and each recipient gets a spreadsheet of their own.
+              DistroSheet stays in Google Sheets. Send the file to a recipient,
+              and when you change it, we update the files they already have.
             </p>
           </div>
           <div class="values">
             <article class="value">
               <span class="value-index">01</span>
-              <h3>Their file, not a shared mess</h3>
+              <h3>Delivered to each recipient</h3>
               <p>
-                Send copy clones the spreadsheet in Drive and shares it with one
-                email. That person edits their copy. They never type over yours.
+                Enter an email and DistroSheet sends them the file. They work in
+                their file. You keep working in yours.
               </p>
             </article>
             <article class="value">
               <span class="value-index">02</span>
               <h3>What they type stays put</h3>
               <p>
-                Mark the cells clients fill in, and name any tabs that should be
-                left alone. A publish skips those, and writes everything else.
+                Mark the cells recipients fill in, and name any tabs that should be
+                left alone. Updates skip those and deliver the rest.
               </p>
             </article>
             <article class="value">
               <span class="value-index">03</span>
-              <h3>One update, every copy</h3>
+              <h3>Updates, handled</h3>
               <p>
-                Change the master sheet once. Publish pushes values and formatting
-                to the people who already have a copy — no files to resend.
+                Change your sheet. DistroSheet updates every recipient file you’ve
+                already sent, so you don’t have to send it again.
               </p>
             </article>
           </div>
@@ -169,8 +221,8 @@
             <p class="kicker">Features</p>
             <h2>The same controls as the extension.</h2>
             <p>
-              Open a Google Sheet, sign in, and the file links itself. From there
-              you send copies and publish updates.
+              Open a Google Sheet and sign in. Deliver the file, then let
+              DistroSheet handle updates when you improve it.
             </p>
           </div>
           <div class="features">
@@ -183,8 +235,8 @@
               <div>
                 <h3>Google sign-in</h3>
                 <p>
-                  Continue with Google so DistroSheet can clone the file in Drive
-                  and write updates back through Sheets.
+                  Continue with Google so DistroSheet can deliver the file and
+                  write updates through Sheets.
                 </p>
               </div>
             </article>
@@ -197,8 +249,8 @@
               <div>
                 <h3>The open sheet is the source</h3>
                 <p>
-                  The spreadsheet in the current tab becomes your Sheets file.
-                  Later publishes start from that file.
+                  The spreadsheet you have open is the one DistroSheet delivers.
+                  Updates start from that file.
                 </p>
               </div>
             </article>
@@ -210,10 +262,10 @@
                 </svg>
               </span>
               <div>
-                <h3>Send copy</h3>
+                <h3>Send the file</h3>
                 <p>
-                  Enter a client email. DistroSheet clones the spreadsheet, shares
-                  it with them, and remembers them for the next publish.
+                  Enter a recipient email. DistroSheet sends them the file and
+                  remembers them for later updates.
                 </p>
               </div>
             </article>
@@ -224,10 +276,10 @@
                 </svg>
               </span>
               <div>
-                <h3>Publish update</h3>
+                <h3>Deliver updates</h3>
                 <p>
-                  Push the master into every copy you’ve already sent. Someone new
-                  still needs Send copy — publish is for people already on the list.
+                  When the sheet changes, DistroSheet updates everyone who already
+                  has the file. A new recipient gets it with Send file.
                 </p>
               </div>
             </article>
@@ -241,7 +293,7 @@
                 <h3>Protected cells</h3>
                 <p>
                   List A1 ranges where recipients enter their own data, like
-                  B2:B10, D4. Send copy still includes them. Publish does not write there.
+                  B2:B10, D4. Updates leave those cells as they are.
                 </p>
               </div>
             </article>
@@ -254,10 +306,70 @@
               <div>
                 <h3>Tabs left untouched</h3>
                 <p>
-                  Name whole tabs to skip on publish — exact names, like _engine
-                  or Lookup. Those sheets stay as the client left them.
+                  Name whole tabs to leave alone when you update — exact names, like
+                  _engine or Lookup. Those stay as the recipient left them.
                 </p>
               </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="use-cases">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="kicker">Use cases</p>
+            <h2>Build the sheet. We keep everyone current.</h2>
+            <p>
+              DistroSheet delivers the file, then updates it when you improve
+              the sheet. Recipients keep what they typed.
+            </p>
+          </div>
+          <div class="usecases">
+            <article class="usecase">
+              <h3>A useful sheet for your team</h3>
+              <p>
+                A roster, plan, or tracker the whole team relies on. DistroSheet
+                delivers it, and they receive your most updated version without
+                the hassle of a new file.
+              </p>
+            </article>
+            <article class="usecase">
+              <h3>An app, built in Google Sheets</h3>
+              <p>
+                Deliver the sheet to users as a live file they keep using. When
+                you improve it, DistroSheet delivers the update.
+              </p>
+              <p class="usecase-soon">Get paid from the sheet <span>Coming soon</span></p>
+            </article>
+            <article class="usecase">
+              <h3>The same workbook for every client</h3>
+              <p>
+                Each client gets the file. Their numbers and notes stay theirs.
+                When you improve the model, every client file is updated.
+              </p>
+            </article>
+            <article class="usecase">
+              <h3>A calculator your customers fill in</h3>
+              <p>
+                A quote tool, budget, or planner. They enter their own figures.
+                You improve the formulas, and DistroSheet delivers that change
+                without wiping what they typed.
+              </p>
+            </article>
+            <article class="usecase">
+              <h3>Training or onboarding</h3>
+              <p>
+                A sheet for a new hire, a class, or a contractor. They always
+                have your latest version. Their answers stay where they left them.
+              </p>
+            </article>
+            <article class="usecase">
+              <h3>One sheet, several locations</h3>
+              <p>
+                Deliver the operating sheet to each site. Local entries stay put.
+                When you improve the structure, every location gets the update.
+              </p>
             </article>
           </div>
         </div>
@@ -267,9 +379,9 @@
         <div class="wrap">
           <div class="section-head">
             <p class="kicker">Pricing</p>
-            <h2>Start free. Publish without a cap on Pro.</h2>
+            <h2>Start free. Update without a cap on Pro.</h2>
             <p>
-              Starter includes one publish each calendar month. Pro is the same
+              Starter includes one update each calendar month. Pro is the same
               product with that limit removed.
             </p>
           </div>
@@ -283,11 +395,11 @@
               <ul>
                 <li>
                   <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.704 5.29a1 1 0 010 1.42l-7.25 7.25a1 1 0 01-1.42 0l-3.25-3.25a1 1 0 111.42-1.42l2.54 2.54 6.54-6.54a1 1 0 011.42 0z" clip-rule="evenodd"/></svg>
-                  Send copies to client emails
+                  Deliver the file to client emails
                 </li>
                 <li>
                   <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.704 5.29a1 1 0 010 1.42l-7.25 7.25a1 1 0 01-1.42 0l-3.25-3.25a1 1 0 111.42-1.42l2.54 2.54 6.54-6.54a1 1 0 011.42 0z" clip-rule="evenodd"/></svg>
-                  1 publish per month
+                  1 update per month
                 </li>
                 <li>
                   <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.704 5.29a1 1 0 010 1.42l-7.25 7.25a1 1 0 01-1.42 0l-3.25-3.25a1 1 0 111.42-1.42l2.54 2.54 6.54-6.54a1 1 0 011.42 0z" clip-rule="evenodd"/></svg>
@@ -302,10 +414,10 @@
             <article class="plan plan-pro">
               <div class="plan-label">
                 <span>Pro</span>
-                <span class="badge">Unlimited pushes</span>
+                <span class="badge">Unlimited updates</span>
               </div>
               <p class="price">Unlimited</p>
-              <p class="price-note">publishes, every month</p>
+              <p class="price-note">updates, every month</p>
               <ul>
                 <li>
                   <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.704 5.29a1 1 0 010 1.42l-7.25 7.25a1 1 0 01-1.42 0l-3.25-3.25a1 1 0 111.42-1.42l2.54 2.54 6.54-6.54a1 1 0 011.42 0z" clip-rule="evenodd"/></svg>
@@ -313,7 +425,7 @@
                 </li>
                 <li>
                   <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.704 5.29a1 1 0 010 1.42l-7.25 7.25a1 1 0 01-1.42 0l-3.25-3.25a1 1 0 111.42-1.42l2.54 2.54 6.54-6.54a1 1 0 011.42 0z" clip-rule="evenodd"/></svg>
-                  Unlimited publishes
+                  Unlimited updates
                 </li>
                 <li>
                   <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.704 5.29a1 1 0 010 1.42l-7.25 7.25a1 1 0 01-1.42 0l-3.25-3.25a1 1 0 111.42-1.42l2.54 2.54 6.54-6.54a1 1 0 011.42 0z" clip-rule="evenodd"/></svg>
@@ -321,13 +433,13 @@
                 </li>
                 <li>
                   <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.704 5.29a1 1 0 010 1.42l-7.25 7.25a1 1 0 01-1.42 0l-3.25-3.25a1 1 0 111.42-1.42l2.54 2.54 6.54-6.54a1 1 0 011.42 0z" clip-rule="evenodd"/></svg>
-                  Upgrade from the extension when you pass the free publish
+                  Upgrade from the extension when you pass the free update
                 </li>
               </ul>
             </article>
           </div>
           <p class="fine-print">
-            A public Pro price isn’t set yet. The extension offers the upgrade when a Starter account hits the monthly publish limit.
+            A public Pro price isn’t set yet. The extension offers the upgrade when a Starter account hits the monthly update limit.
           </p>
         </div>
       </section>
@@ -337,7 +449,7 @@
           <div class="contact-panel">
             <div>
               <p class="kicker">Support</p>
-              <h2>Questions about a sheet, a publish, or Pro?</h2>
+              <h2>Questions about a sheet, an update, or Pro?</h2>
               <p>
                 Write to support and include the spreadsheet name if something
                 didn’t send or sync.
@@ -360,6 +472,6 @@
       </div>
     </footer>
 
-    <script src="/main.js"></script>
+    <script src="/main.js?v=9"></script>
   </body>
 </html>

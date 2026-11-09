@@ -107,8 +107,12 @@ input {
   height: 32px;
   border-radius: 8px;
   background: var(--green);
-  color: white;
+  color: #fff;
   box-shadow: 0 1px 2px rgba(60, 64, 67, 0.16);
+}
+
+.mock .brand-mark {
+  color: #fff;
 }
 
 .brand-name {
@@ -168,10 +172,156 @@ input {
 }
 
 .hero-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 40px;
+}
+
+.hero-stage {
+  position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.85fr);
-  gap: 56px;
+  grid-template-columns: auto auto auto;
+  grid-template-areas: "sheet distro people";
+  justify-content: center;
   align-items: center;
+  column-gap: 40px;
+  margin-inline: auto;
+}
+
+.project {
+  grid-area: sheet;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px 12px 12px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.project small {
+  display: block;
+  color: var(--green-button);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.project strong {
+  display: block;
+  min-width: 11em;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  transition: opacity 0.22s ease;
+}
+
+.project strong.is-fading {
+  opacity: 0;
+}
+
+.hero-stage .mock {
+  grid-area: distro;
+  width: 300px;
+}
+
+.routes {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.recipients {
+  display: flex;
+  flex-direction: column;
+  grid-area: people;
+  gap: 16px;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.recipients li {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px 6px 6px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--white);
+  box-shadow: 0 1px 2px rgba(60, 64, 67, 0.06);
+}
+
+.avatar {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: var(--green-soft);
+  color: var(--green-button);
+}
+
+.who {
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 650;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .recipients li:nth-child(1) .avatar::after,
+  .recipients li:nth-child(2) .avatar::after,
+  .recipients li:nth-child(3) .avatar::after,
+  .recipients li:nth-child(4) .avatar::after {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border: 2px solid rgba(19, 115, 51, 0.4);
+    border-radius: 999px;
+    animation: arrive 3.2s ease-out infinite;
+  }
+
+  .recipients li:nth-child(2) .avatar::after {
+    animation-delay: 0.85s;
+  }
+
+  .recipients li:nth-child(3) .avatar::after {
+    animation-delay: 1.7s;
+  }
+
+  .recipients li:nth-child(4) .avatar::after {
+    animation-delay: 2.55s;
+  }
+}
+
+@keyframes arrive {
+  0%,
+  62% {
+    opacity: 0;
+    transform: scale(0.86);
+  }
+
+  74% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.28);
+  }
 }
 
 .kicker {
@@ -274,8 +424,10 @@ h1 {
 }
 
 .mock {
-  width: min(100%, 360px);
-  margin-left: auto;
+  position: relative;
+  z-index: 1;
+  width: 300px;
+  margin: 0;
   background: var(--bg);
   border: 1px solid var(--line);
   border-radius: 16px;
@@ -298,7 +450,7 @@ h1 {
   letter-spacing: -0.02em;
 }
 
-.mock-bar span {
+.mock-bar > div span {
   display: block;
   color: var(--muted);
   font-size: 11px;
@@ -511,6 +663,54 @@ h1 {
   font-size: 15px;
 }
 
+.usecases {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.usecase {
+  padding: 22px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+.usecase h3 {
+  margin-bottom: 8px;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  font-weight: 650;
+}
+
+.usecase p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.usecase-soon {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.usecase-soon span {
+  border-radius: 999px;
+  background: var(--green-soft);
+  color: var(--green-deep);
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 .features {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -703,14 +903,45 @@ h1 {
   .hero-grid,
   .values,
   .features,
+  .usecases,
   .plans,
   .contact-panel {
     grid-template-columns: 1fr;
     display: grid;
   }
 
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-stage {
+    width: min(100%, 340px);
+    margin-inline: auto;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "sheet"
+      "distro"
+      "people";
+    justify-items: center;
+    row-gap: 28px;
+  }
+
+  .hero-stage .mock {
+    width: min(100%, 320px);
+  }
+
   .mock {
     margin-inline: auto;
+  }
+
+  .recipients {
+    display: flex;
+    grid-area: people;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
   }
 
   .contact-panel {
