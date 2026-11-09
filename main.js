@@ -39,6 +39,36 @@ if (stage) {
   let sheetNameIndex = 0;
   let lastSignature = "";
 
+  function pulsePerson(person) {
+    person.classList.remove("is-arriving");
+    void person.offsetWidth;
+    person.classList.add("is-arriving");
+  }
+
+  function playOutbound(motion, traveler, person, delay) {
+    const launch = () => {
+      if (!motion.isConnected) return;
+      traveler.style.transition = "none";
+      traveler.style.opacity = "0";
+      motion.beginElement();
+      window.requestAnimationFrame(() => {
+        if (!traveler.isConnected) return;
+        traveler.style.transition = "opacity 0.18s linear";
+        traveler.style.opacity = "1";
+      });
+    };
+
+    motion.addEventListener("endEvent", () => {
+      if (!motion.isConnected) return;
+      pulsePerson(person);
+      traveler.style.transition = "opacity 0.42s ease";
+      traveler.style.opacity = "0";
+      window.setTimeout(launch, 460);
+    });
+
+    window.setTimeout(launch, delay);
+  }
+
   function advanceSheetName(motion, fade) {
     const restart = () => {
       if (!motion.isConnected) return;
@@ -60,6 +90,36 @@ if (stage) {
 
   function rel(x, y, box) {
     return { x: x - box.left, y: y - box.top };
+  }
+
+  function roundedPath(points, radius) {
+    const parts = [`M ${points[0].x} ${points[0].y}`];
+    for (let i = 1; i < points.length - 1; i++) {
+      const prev = points[i - 1];
+      const corner = points[i];
+      const next = points[i + 1];
+      const inX = corner.x - prev.x;
+      const inY = corner.y - prev.y;
+      const outX = next.x - corner.x;
+      const outY = next.y - corner.y;
+      const inLen = Math.hypot(inX, inY);
+      const outLen = Math.hypot(outX, outY);
+      const r = Math.min(radius, inLen / 2, outLen / 2);
+      if (r < 0.5) {
+        parts.push(`L ${corner.x} ${corner.y}`);
+        continue;
+      }
+      const startX = corner.x - (inX / inLen) * r;
+      const startY = corner.y - (inY / inLen) * r;
+      const endX = corner.x + (outX / outLen) * r;
+      const endY = corner.y + (outY / outLen) * r;
+      const sweep = inX * outY - inY * outX > 0 ? 1 : 0;
+      parts.push(`L ${startX} ${startY}`);
+      parts.push(`A ${r} ${r} 0 0 ${sweep} ${endX} ${endY}`);
+    }
+    const last = points[points.length - 1];
+    parts.push(`L ${last.x} ${last.y}`);
+    return parts.join(" ");
   }
 
   function drawRoutes() {
@@ -84,13 +144,24 @@ if (stage) {
       const end = below
         ? rel(toMidX, to.top, box)
         : rel(to.left, toMidY, box);
+      const edgeX = end.x;
+      const edgeY = end.y;
       if (index === 0) {
         if (below) end.y += 18;
         else end.x += 18;
       }
-      const d = below
-        ? `M ${start.x} ${start.y} C ${start.x} ${start.y + (end.y - start.y) * 0.5}, ${end.x} ${end.y - (end.y - start.y) * 0.35}, ${end.x} ${end.y}`
-        : `M ${start.x} ${start.y} C ${start.x + (end.x - start.x) * 0.55} ${start.y}, ${end.x - (end.x - start.x) * 0.28} ${end.y}, ${end.x} ${end.y}`;
+      const midX = start.x + (edgeX - start.x) / 2;
+      const midY = start.y + (edgeY - start.y) / 2;
+      const d = index === 0
+        ? (below
+          ? `M ${start.x} ${start.y} V ${midY} H ${end.x} V ${end.y}`
+          : `M ${start.x} ${start.y} H ${midX} V ${end.y} H ${end.x}`)
+        : roundedPath(
+          below
+            ? [start, { x: start.x, y: midY }, { x: end.x, y: midY }, end]
+            : [start, { x: midX, y: start.y }, { x: midX, y: end.y }, end],
+          10
+        );
       return { d, end };
     });
 
@@ -106,17 +177,20 @@ if (stage) {
       path.setAttribute("id", `route-${index}`);
       path.setAttribute("d", route.d);
       path.setAttribute("fill", "none");
-      path.setAttribute("stroke", "#8fbfa0");
+      path.setAttribute("stroke", "#53df85");
       path.setAttribute("stroke-width", "1.75");
-      path.setAttribute("stroke-linecap", "round");
+      path.setAttribute("stroke-linecap", "butt");
+      path.setAttribute("stroke-linejoin", "miter");
       svg.appendChild(path);
+    });
 
+    routes.forEach((route, index) => {
       if (reduceMotion) {
         const parked = document.createElementNS(svgNs, "circle");
         parked.setAttribute("cx", String(route.end.x));
         parked.setAttribute("cy", String(route.end.y));
         parked.setAttribute("r", "3.5");
-        parked.setAttribute("fill", "#137333");
+        parked.setAttribute("fill", "#53df85");
         svg.appendChild(parked);
         return;
       }
@@ -125,10 +199,10 @@ if (stage) {
       const inbound = index === 0;
       const motion = document.createElementNS(svgNs, "animateMotion");
       motion.setAttribute("dur", inbound ? "2.6s" : "3.2s");
-      motion.setAttribute("repeatCount", inbound ? "1" : "indefinite");
-      motion.setAttribute("begin", inbound ? "indefinite" : `${index * 0.85}s`);
+      motion.setAttribute("repeatCount", "1");
+      motion.setAttribute("begin", "indefinite");
       motion.setAttribute("calcMode", "linear");
-      if (inbound) motion.setAttribute("fill", "freeze");
+      motion.setAttribute("fill", "freeze");
       const mpath = document.createElementNS(svgNs, "mpath");
       mpath.setAttribute("href", `#route-${index}`);
       motion.appendChild(mpath);
@@ -154,12 +228,14 @@ if (stage) {
       halo.setAttribute("fill", "#ffffff");
       const dot = document.createElementNS(svgNs, "circle");
       dot.setAttribute("r", "3.25");
-      dot.setAttribute("fill", "#137333");
+      dot.setAttribute("fill", "#53df85");
       traveler.append(halo, dot);
       svg.appendChild(traveler);
       if (inbound) {
         motion.beginElement();
         fade.beginElement();
+      } else {
+        playOutbound(motion, traveler, people[index - 1], index * 850);
       }
     });
   }
@@ -167,6 +243,44 @@ if (stage) {
   drawRoutes();
   const observer = new ResizeObserver(drawRoutes);
   observer.observe(stage);
+}
+
+const accessForm = document.querySelector("[data-access-form]");
+
+if (accessForm) {
+  const status = accessForm.querySelector("[data-access-status]");
+  accessForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const email = String(new FormData(accessForm).get("email") || "").trim();
+    const button = accessForm.querySelector("button");
+    status.textContent = "";
+    status.classList.remove("is-error");
+    button.disabled = true;
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/dan@acumetltd.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          _subject: "DistroSheet exclusive access signup",
+          _template: "table",
+          _captcha: "false",
+        }),
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok || String(data.success) === "false") throw new Error("Request failed");
+      accessForm.reset();
+      status.textContent = "You're signed up. We'll be in touch.";
+    } catch {
+      status.textContent = "Something went wrong. Try again in a moment.";
+      status.classList.add("is-error");
+    } finally {
+      button.disabled = false;
+    }
+  });
 }
 
 const mock = document.querySelector("[data-mock]");

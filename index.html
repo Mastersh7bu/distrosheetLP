@@ -8,7 +8,7 @@
       name="description"
       content="DistroSheet delivers your Google Sheet to each recipient and keeps their files up to date when you improve yours, without overwriting the cells and tabs they own."
     />
-    <meta name="theme-color" content="#137333" />
+    <meta name="theme-color" content="#53DF85" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta property="og:title" content="DistroSheet — Take your sheet to the next level" />
     <meta
@@ -16,7 +16,7 @@
       content="Improve the sheet. DistroSheet delivers it to each recipient and updates their files when yours changes."
     />
     <meta property="og:type" content="website" />
-    <link rel="stylesheet" href="/styles.css?v=11" />
+    <link rel="stylesheet" href="/styles.css?v=25" />
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -26,8 +26,8 @@
         <a class="brand" href="#top">
           <span class="brand-mark" aria-hidden="true">
             <svg viewBox="0 0 16 16" width="18" height="18" fill="none" aria-hidden="true">
-              <rect x="2" y="2" width="12" height="12" rx="1.75" stroke="#fff" stroke-width="1.5"/>
-              <path d="M2 6h12M2 10h12M8 2v12" stroke="#fff" stroke-width="1.5"/>
+              <rect x="2" y="2" width="12" height="12" rx="1.75" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M2 6h12M2 10h12M8 2v12" stroke="currentColor" stroke-width="1.5"/>
             </svg>
           </span>
           <span class="brand-name">DistroSheet</span>
@@ -60,12 +60,15 @@
       <section class="hero" id="top">
         <div class="wrap hero-grid">
           <div>
-            <p class="kicker">Chrome extension for Google Sheets</p>
-            <h1>Take your sheet to the next level.</h1>
+            <h1>We don't just deliver, we over-deliver.</h1>
+            <p class="subtitle">We turn one-time Google Sheets into living, managed assets.</p>
             <p class="lede">
-              Improve the sheet you already use. DistroSheet delivers it to each
-              recipient, then updates their files when yours changes — without
-              overwriting the cells and tabs they own.
+              You can always share a sheet. But what if you have made changes to it?
+              What if you want multiple people to have their own instance of it and still get updates?
+            </p>
+            <p class="lede">
+              DistroSheet delivers your sheet initially and manages updates without
+              touching your data. You provide more value to your recipients. We deliver.
             </p>
             <div class="hero-actions">
               <a class="button button-primary" href="#features">See what it does</a>
@@ -83,8 +86,8 @@
             <div class="project" data-project>
               <span class="brand-mark" aria-hidden="true">
                 <svg viewBox="0 0 16 16" width="18" height="18" fill="none">
-                  <rect x="2" y="2" width="12" height="12" rx="1.75" stroke="#fff" stroke-width="1.5"/>
-                  <path d="M2 6h12M2 10h12M8 2v12" stroke="#fff" stroke-width="1.5"/>
+                  <rect x="2" y="2" width="12" height="12" rx="1.75" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M2 6h12M2 10h12M8 2v12" stroke="currentColor" stroke-width="1.5"/>
                 </svg>
               </span>
               <span>
@@ -96,8 +99,8 @@
             <div class="mock-bar">
               <span class="brand-mark" aria-hidden="true">
                 <svg viewBox="0 0 16 16" width="18" height="18" fill="none" aria-hidden="true">
-                  <rect x="2" y="2" width="12" height="12" rx="1.75" stroke="#fff" stroke-width="1.5"/>
-                  <path d="M2 6h12M2 10h12M8 2v12" stroke="#fff" stroke-width="1.5"/>
+                  <rect x="2" y="2" width="12" height="12" rx="1.75" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M2 6h12M2 10h12M8 2v12" stroke="currentColor" stroke-width="1.5"/>
                 </svg>
               </span>
               <div>
@@ -215,11 +218,34 @@
         </div>
       </section>
 
+      <section class="section" id="access">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Sign up below to get exclusive access.</h2>
+          </div>
+          <form class="access-form" data-access-form>
+            <label class="sr-only" for="access-email">Email</label>
+            <div class="access-row">
+              <input
+                id="access-email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+                placeholder="you@email.com"
+              />
+              <button class="button button-primary" type="submit">Sign up</button>
+            </div>
+            <p class="access-status" data-access-status role="status"></p>
+          </form>
+        </div>
+      </section>
+
       <section class="section section-tight" id="features">
         <div class="wrap">
           <div class="section-head">
             <p class="kicker">Features</p>
-            <h2>The same controls as the extension.</h2>
+            <h2>Send the file. We handle the updates.</h2>
             <p>
               Open a Google Sheet and sign in. Deliver the file, then let
               DistroSheet handle updates when you improve it.
@@ -472,6 +498,6 @@
       </div>
     </footer>
 
-    <script src="/main.js?v=9"></script>
+    <script src="/main.js?v=22"></script>
   </body>
 </html>
