@@ -110,6 +110,18 @@ input {
   background: var(--green);
   color: var(--on-accent);
   box-shadow: 0 1px 2px rgba(60, 64, 67, 0.16);
+  overflow: hidden;
+}
+
+.brand-mark img {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+}
+
+.brand-mark:has(img) {
+  background: none;
+  box-shadow: none;
 }
 
 .mock .brand-mark {
@@ -937,10 +949,73 @@ h1 {
   padding: 8px 0 32px;
 }
 
-.site-footer p {
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 20px;
+}
+
+.site-footer p,
+.site-footer a {
   margin: 0;
   color: var(--faint);
   font-size: 13px;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--text);
+}
+
+.legal {
+  padding: 56px 0 80px;
+}
+
+.legal-doc {
+  max-width: 720px;
+}
+
+.legal h1 {
+  margin-bottom: 8px;
+  font-size: clamp(36px, 4vw, 48px);
+}
+
+.legal-updated {
+  margin: 0 0 8px;
+  color: var(--muted);
+}
+
+.legal h2 {
+  margin: 36px 0 8px;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  font-weight: 650;
+}
+
+.legal p,
+.legal li {
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.legal p {
+  margin: 0 0 12px;
+}
+
+.legal ul {
+  margin: 8px 0 0;
+  padding-left: 1.2em;
+}
+
+.legal li {
+  margin: 10px 0;
+}
+
+.legal a {
+  color: var(--text);
 }
 
 :focus-visible {
