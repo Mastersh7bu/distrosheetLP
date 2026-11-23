@@ -658,6 +658,13 @@ h1 {
   font-size: 17px;
 }
 
+.origin {
+  max-width: 640px;
+  margin: 22px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
 .store-badge {
   display: inline-block;
   line-height: 0;
@@ -667,6 +674,17 @@ h1 {
   display: block;
   width: 248px;
   height: auto;
+}
+
+.store-notes {
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.store-notes span {
+  display: block;
 }
 
 .access-form {
