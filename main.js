@@ -285,6 +285,47 @@ if (accessForm) {
   });
 }
 
+const pager = document.querySelector("[data-pager]");
+
+if (pager) {
+  const track = pager.querySelector("[data-pager-track]");
+  const panels = [...pager.querySelectorAll("[data-pager-panel]")];
+  const prev = pager.querySelector("[data-pager-prev]");
+  const next = pager.querySelector("[data-pager-next]");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let index = location.hash === "#use-cases" ? 1 : 0;
+
+  function show(nextIndex, animate) {
+    const target = Math.max(0, Math.min(panels.length - 1, nextIndex));
+    if (animate && target === index) return;
+    index = target;
+    track.style.transition = animate && !reduceMotion ? "" : "none";
+    track.style.transform = `translateX(-${index * 100}%)`;
+    panels.forEach((panel, item) => {
+      const active = item === index;
+      panel.toggleAttribute("inert", !active);
+      panel.setAttribute("aria-hidden", active ? "false" : "true");
+    });
+    prev.disabled = index === 0;
+    next.disabled = index === panels.length - 1;
+    if (!animate) {
+      window.requestAnimationFrame(() => {
+        track.style.transition = "";
+      });
+    }
+  }
+
+  function syncFromHash() {
+    if (location.hash === "#use-cases") show(1, true);
+    else if (location.hash === "#features") show(0, true);
+  }
+
+  prev.addEventListener("click", () => show(index - 1, true));
+  next.addEventListener("click", () => show(index + 1, true));
+  window.addEventListener("hashchange", syncFromHash);
+  show(index, false);
+}
+
 const mock = document.querySelector("[data-mock]");
 
 if (mock) {
