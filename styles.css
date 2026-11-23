@@ -658,6 +658,17 @@ h1 {
   font-size: 17px;
 }
 
+.store-badge {
+  display: inline-block;
+  line-height: 0;
+}
+
+.store-badge img {
+  display: block;
+  width: 248px;
+  height: auto;
+}
+
 .access-form {
   max-width: 520px;
 }

@@ -16,7 +16,7 @@
       content="Improve the sheet. DistroSheet delivers it to each recipient and updates their files when yours changes."
     />
     <meta property="og:type" content="website" />
-    <link rel="stylesheet" href="/styles.css?v=27" />
+    <link rel="stylesheet" href="/styles.css?v=28" />
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -47,7 +47,6 @@
           <a href="#values">Values</a>
           <a href="#features">Features</a>
           <a href="#use-cases">Use cases</a>
-          <a href="#pricing">Pricing</a>
           <a class="nav-contact" href="#contact">Contact support</a>
         </nav>
       </div>
@@ -69,7 +68,7 @@
             </p>
             <div class="hero-actions">
               <a class="button button-primary" href="#features">See what it does</a>
-              <a class="button button-secondary" href="#pricing">View pricing</a>
+              <a class="button button-secondary" href="#access">Try it now</a>
             </div>
             <ul class="facts">
               <li>You improve the sheet</li>
@@ -215,23 +214,22 @@
       <section class="section" id="access">
         <div class="wrap">
           <div class="section-head">
-            <h2>Sign up below to get exclusive access.</h2>
+            <h2>Try it now for free.</h2>
+            <p>Install DistroSheet from the Chrome Web Store and use it on the Google Sheet you have open.</p>
           </div>
-          <form class="access-form" data-access-form>
-            <label class="sr-only" for="access-email">Email</label>
-            <div class="access-row">
-              <input
-                id="access-email"
-                name="email"
-                type="email"
-                autocomplete="email"
-                required
-                placeholder="you@email.com"
-              />
-              <button class="button button-primary" type="submit">Sign up</button>
-            </div>
-            <p class="access-status" data-access-status role="status"></p>
-          </form>
+          <a
+            class="store-badge"
+            href="https://chromewebstore.google.com/detail/distrosheet/jijepodjmgddcfimfdpkolocdmihcmnl"
+            target="_blank"
+            rel="noopener"
+          >
+            <img
+              src="/chrome-web-store-badge-large.png"
+              alt="Available in the Chrome Web Store"
+              width="248"
+              height="75"
+            />
+          </a>
         </div>
       </section>
 
@@ -395,7 +393,7 @@
         </div>
       </section>
 
-      <section class="section pricing" id="pricing">
+      <section class="section pricing" id="pricing" hidden>
         <div class="wrap">
           <div class="section-head">
             <p class="kicker">Pricing</p>
@@ -469,7 +467,7 @@
           <div class="contact-panel">
             <div>
               <p class="kicker">Support</p>
-              <h2>Questions about a sheet, an update, or Pro?</h2>
+              <h2>Questions about a sheet or an update?</h2>
               <p>
                 Get in contact with Dan, and include the spreadsheet name if
                 something didn’t send or sync.
@@ -493,6 +491,6 @@
       </div>
     </footer>
 
-    <script src="/main.js?v=22"></script>
+    <script src="/main.js?v=23"></script>
   </body>
 </html>

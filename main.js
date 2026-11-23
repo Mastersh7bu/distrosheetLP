@@ -52,9 +52,11 @@ if (stage) {
       traveler.style.opacity = "0";
       motion.beginElement();
       window.requestAnimationFrame(() => {
-        if (!traveler.isConnected) return;
-        traveler.style.transition = "opacity 0.18s linear";
-        traveler.style.opacity = "1";
+        window.requestAnimationFrame(() => {
+          if (!traveler.isConnected) return;
+          traveler.style.transition = "opacity 0.18s linear";
+          traveler.style.opacity = "1";
+        });
       });
     };
 
@@ -196,6 +198,7 @@ if (stage) {
       }
 
       const traveler = document.createElementNS(svgNs, "g");
+      traveler.setAttribute("opacity", "0");
       const inbound = index === 0;
       const motion = document.createElementNS(svgNs, "animateMotion");
       motion.setAttribute("dur", inbound ? "2.6s" : "3.2s");
@@ -210,7 +213,6 @@ if (stage) {
 
       let fade = null;
       if (inbound) {
-        traveler.setAttribute("opacity", "0");
         fade = document.createElementNS(svgNs, "animate");
         fade.setAttribute("attributeName", "opacity");
         fade.setAttribute("values", "0;1;1;0;0");
