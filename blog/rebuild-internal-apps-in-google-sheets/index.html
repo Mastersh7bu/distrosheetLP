@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>You Can Now Rebuild Internal Apps in Google Sheets With AI. What about distribution? — DistroSheet</title>
+    <meta
+      name="description"
+      content="A colleague rebuilt an internal app in Google Sheets. Sharing one file meant people stepped on each other. A copy meant the next fix started everyone over."
+    />
+    <meta name="theme-color" content="#53DF85" />
+    <link rel="icon" href="/distrologo1.png" type="image/png" />
+    <link rel="stylesheet" href="/styles.css?v=41" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="/">
+          <span class="brand-mark" aria-hidden="true">
+            <img src="/distrologo1.png" alt="" width="32" height="32" />
+          </span>
+          <span class="brand-name">DistroSheet</span>
+        </a>
+
+        <button
+          class="menu-button"
+          type="button"
+          data-menu-button
+          aria-expanded="false"
+          aria-controls="site-nav"
+          aria-label="Open menu"
+        >
+          <svg viewBox="0 0 20 20" width="18" height="18" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10zm0 5.25a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75a.75.75 0 01-.75-.75z" clip-rule="evenodd" />
+          </svg>
+        </button>
+
+        <nav id="site-nav" class="nav" data-menu>
+          <a href="/#values">Values</a>
+          <a href="/#features">Features</a>
+          <a href="/#use-cases">Use cases</a>
+          <a href="/#blog">Blog</a>
+          <a class="nav-contact" href="/#contact">Contact support</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="post">
+      <article class="wrap post-doc">
+        <h1>You Can Now Rebuild Internal Apps in Google Sheets With AI. What about distribution?</h1>
+        <time datetime="2026-11-27">November 27, 2026</time>
+
+        <p>
+          A couple of weeks ago, a colleague at work spoke to me about an internal app he’d put together to help staff with their day-to-day tasks. It had a collection of small, practical helper tools — a menu searcher to find where specific applications lived inside our system (archaic that it doesn’t come built in, but it’s what we had to deal with), a random user info generator for testing, and a handful of other quick utilities.
+        </p>
+        <p>
+          He’d originally built it in Bubble, which worked great, until the company decided they didn’t want to fork out for a proper license.
+        </p>
+        <p>
+          Instead of letting the tool die, he opened up Gemini and Claude and rebuilt the entire thing inside Google Sheets. He decided it was the best way to avoid further red tape in getting the tool live.
+        </p>
+        <p>
+          Using Apps Script under the hood, it did everything the Bubble app had done, and he already had plans to keep expanding the catalogue with more tools.
+        </p>
+        <p>
+          As he was walking me through it, he mentioned he was about to share it with the team the usual way you share any Google Sheet.
+        </p>
+        <p>
+          That’s when a problem jumped out at me. “If everyone is using the same sheet at the same time, aren’t they going to be stepping on each other’s toes?”
+        </p>
+        <p>
+          “Easy. I’ll just tell everyone to make their own individual copy.” He replied swiftly.
+        </p>
+        <p>
+          Then the second kink raised its head. “Okay, but what happens next week when you add a new tool or fix a bug? Everyone has to go make a brand-new copy just to get the latest version.”
+        </p>
+        <p>This time, there was no reply.</p>
+        <p>
+          That kind of friction is the fastest way to kill adoption of something you want people to use. People won’t keep re-copying a file every time you tweak it.
+        </p>
+
+        <h2>Spreadsheets aren’t just static tables anymore</h2>
+        <p>
+          That conversation stuck with me for the rest of the day. There had to be a way for someone who builds in Google Sheets to manage distribution the same way traditional software creators do. After all, he did make a SaaS (software as a sheet), but the distribution was not there.
+        </p>
+        <p>
+          For this use case, moving internal tools into Google Sheets is a massive unlock for companies. If your organisation already pays for a company-wide Google Workspace license, shipping an internal tool in Sheets is a no-brainer compared to the headache of hosting a web app: no servers to maintain, no Google OAuth to integrate, no new SaaS licenses to get signed off on, and IT security reviews. The infrastructure and permissions are already there for free.
+        </p>
+        <p>
+          There’s a lot of untapped potential in all the non-technical domain experts and builders inside companies right now. People who deeply understand a workflow, a finance process, or an operational bottleneck, and who, thanks to AI, can now distill that knowledge into genuinely useful tools and mini-apps. The path of least resistance to get the people using it would be to build via sheets.
+        </p>
+        <p>AI solved the building problem.</p>
+        <p>
+          Anyone can build a working tool in an afternoon now. The real sticking point is making those tools as easy to distribute and maintain as actual web apps.
+        </p>
+        <p>
+          Or how about staying within the ecosystem &gt; easy integration and adoption &gt; no steep learning curve building on top of Google Sheets.
+        </p>
+
+        <h2>Building the missing layer</h2>
+        <p>
+          After work that evening, I sat down to research the problem and see if I could build a prototype. I had a rudimentary extension that did what I set out to do.
+        </p>
+        <p>
+          Fast-forward to today, and that prototype is now live as DistroSheet.
+        </p>
+        <p>The workflow is simple:</p>
+        <ol>
+          <li>Open the Chrome extension from your master Google Sheet.</li>
+          <li>Enter your recipients and hit send to distribute individual copies.</li>
+          <li>Mark out the user-input areas — the specific cells or tabs where you expect people to type their own data — so they stay completely preserved.</li>
+          <li>Whenever you add a new tool, fix a formula, or tweak the layout in your master sheet, just push the update.</li>
+        </ol>
+        <p>
+          Every recipient gets the latest version seamlessly in the copy they’re already using, without losing their work or chasing down a “v2” updated link. All without touching sheet data. We make calls to Google for that, so your data stays private.
+        </p>
+        <p>
+          My hope is that this helps creators and teams stop treating their spreadsheets like static, throwaway documents and start treating them like managed assets. Like an app or a utility that can be easily distributed, providing value.
+        </p>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <p>DistroSheet · A Chrome extension for Google Sheets</p>
+        <div class="footer-links">
+          <a href="/how-we-send">How we send files</a>
+          <a href="/privacy">Privacy</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/main.js?v=25"></script>
+  </body>
+</html>

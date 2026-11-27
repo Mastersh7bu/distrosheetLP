@@ -354,7 +354,7 @@ input {
   color: var(--green-deep);
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
 }
 
@@ -647,7 +647,7 @@ h1 {
 .section-head h2 {
   margin-bottom: 8px;
   font-size: clamp(28px, 3vw, 36px);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.045em;
   line-height: 1.15;
   font-weight: 650;
 }
@@ -656,13 +656,38 @@ h1 {
   margin-bottom: 0;
   color: var(--muted);
   font-size: 17px;
+  letter-spacing: -0.012em;
 }
 
-.origin {
-  max-width: 640px;
-  margin: 22px 0 0;
-  color: var(--muted);
-  font-size: 15px;
+.section-head a {
+  color: var(--text);
+  text-underline-offset: 2px;
+}
+
+.section-head a:hover {
+  color: var(--green-deep);
+}
+
+#values {
+  padding-bottom: 28px;
+}
+
+#access {
+  padding-top: 0;
+}
+
+.how-it-started {
+  gap: 4px;
+  margin-bottom: 28px;
+  padding-right: 12px;
+}
+
+.how-it-started svg {
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.how-it-started:hover svg {
+  transform: translateX(4px);
 }
 
 .store-badge {
@@ -766,7 +791,7 @@ h1 {
   color: var(--green-button);
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.03em;
 }
 
 .value h3,
@@ -774,7 +799,7 @@ h1 {
 .plan h3 {
   margin-bottom: 8px;
   font-size: 18px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.035em;
   font-weight: 650;
 }
 
@@ -784,6 +809,7 @@ h1 {
   margin-bottom: 0;
   color: var(--muted);
   font-size: 15px;
+  letter-spacing: -0.012em;
 }
 
 .usecases {
@@ -802,7 +828,7 @@ h1 {
 .usecase h3 {
   margin-bottom: 8px;
   font-size: 18px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.035em;
   font-weight: 650;
 }
 
@@ -810,6 +836,7 @@ h1 {
   margin-bottom: 0;
   color: var(--muted);
   font-size: 15px;
+  letter-spacing: -0.012em;
 }
 
 .usecase-soon {
@@ -944,7 +971,7 @@ h1 {
   color: var(--green-deep);
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
 }
 
@@ -1000,6 +1027,100 @@ h1 {
   font-size: 13px;
 }
 
+.posts {
+  display: grid;
+  gap: 12px;
+}
+
+.post-card {
+  display: block;
+  max-width: 720px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--white);
+  color: inherit;
+  text-decoration: none;
+}
+
+.post-card:hover {
+  border-color: var(--green-line);
+}
+
+.post-card time {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--green-deep);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.post-card h3 {
+  margin-bottom: 8px;
+  font-size: 22px;
+  letter-spacing: -0.035em;
+  font-weight: 650;
+}
+
+.post-card p {
+  margin: 0;
+  max-width: 62ch;
+  color: var(--muted);
+  font-size: 15px;
+  letter-spacing: -0.012em;
+}
+
+.post {
+  padding: 56px 0 80px;
+}
+
+.post-doc {
+  max-width: 720px;
+}
+
+.post h1 {
+  margin-bottom: 8px;
+  font-size: clamp(32px, 4vw, 44px);
+  letter-spacing: -0.045em;
+  line-height: 1.12;
+}
+
+.post time {
+  display: block;
+  margin: 0 0 28px;
+  color: var(--muted);
+}
+
+.post h2 {
+  margin: 36px 0 8px;
+  font-size: 22px;
+  letter-spacing: -0.035em;
+  line-height: 1.25;
+  font-weight: 650;
+}
+
+.post p,
+.post li {
+  font-size: 16px;
+  line-height: 1.7;
+  letter-spacing: -0.012em;
+}
+
+.post p {
+  margin: 0 0 14px;
+}
+
+.post ol {
+  margin: 0 0 14px;
+  padding-left: 1.2em;
+}
+
+.post li {
+  margin: 8px 0;
+}
+
 .contact {
   padding-top: 24px;
 }
@@ -1018,7 +1139,7 @@ h1 {
 .contact-panel h2 {
   margin-bottom: 6px;
   font-size: 28px;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.045em;
   font-weight: 650;
 }
 
@@ -1026,6 +1147,7 @@ h1 {
   margin: 0;
   max-width: 460px;
   color: var(--muted);
+  letter-spacing: -0.012em;
 }
 
 .site-footer {
@@ -1050,6 +1172,12 @@ h1 {
 
 .site-footer a:hover {
   color: var(--text);
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
 }
 
 .legal {
@@ -1225,7 +1353,8 @@ h1 {
     scroll-behavior: auto;
   }
 
-  .pager-track {
+  .pager-track,
+  .how-it-started svg {
     transition: none;
   }
 }

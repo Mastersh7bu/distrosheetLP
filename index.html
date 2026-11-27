@@ -16,7 +16,7 @@
       content="Improve the sheet. DistroSheet delivers it to each recipient and updates their files when yours changes."
     />
     <meta property="og:type" content="website" />
-    <link rel="stylesheet" href="/styles.css?v=35" />
+    <link rel="stylesheet" href="/styles.css?v=45" />
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -47,6 +47,7 @@
           <a href="#values">Values</a>
           <a href="#features">Features</a>
           <a href="#use-cases">Use cases</a>
+          <a href="#blog">Blog</a>
           <a class="nav-contact" href="#contact">Contact support</a>
         </nav>
       </div>
@@ -179,6 +180,7 @@
               People won’t keep re-copying a file every time you tweak it.
               Send each person their own file. When you change yours, DistroSheet
               updates the copy they already have.
+              <a href="/how-we-send">See what happens when you send a sheet.</a>
             </p>
           </div>
           <div class="values">
@@ -207,14 +209,17 @@
               </p>
             </article>
           </div>
-          <p class="origin">
-            DistroSheet started from that exact problem: a useful sheet, and no good way to keep it current.
-          </p>
         </div>
       </section>
 
       <section class="section" id="access">
         <div class="wrap">
+          <a class="button button-secondary how-it-started" href="/blog/rebuild-internal-apps-in-google-sheets/">
+            See how it got started
+            <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+            </svg>
+          </a>
           <div class="section-head">
             <h2>Try it now for free.</h2>
             <p>Install DistroSheet from the Chrome Web Store and use it on the Google Sheet you have open.</p>
@@ -484,6 +489,29 @@
         </div>
       </section>
 
+      <section class="section blog" id="blog">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="kicker">Blog</p>
+            <h2>From the DistroSheet blog.</h2>
+            <p>
+              Notes on sending a sheet, pushing an update, and keeping the files
+              people already have up to date.
+            </p>
+          </div>
+          <div class="posts">
+            <a class="post-card" href="/blog/rebuild-internal-apps-in-google-sheets/">
+              <time datetime="2026-11-27">November 27, 2026</time>
+              <h3>You Can Now Rebuild Internal Apps in Google Sheets With AI. What about distribution?</h3>
+              <p>
+                A colleague rebuilt an internal app in Google Sheets. Sharing it
+                the usual way broke as soon as he needed to update it.
+              </p>
+            </a>
+          </div>
+        </div>
+      </section>
+
       <section class="section contact" id="contact">
         <div class="wrap">
           <div class="contact-panel">
@@ -509,7 +537,10 @@
     <footer class="site-footer">
       <div class="wrap footer-inner">
         <p>DistroSheet · A Chrome extension for Google Sheets</p>
-        <a href="/privacy">Privacy</a>
+        <div class="footer-links">
+          <a href="/how-we-send">How we send files</a>
+          <a href="/privacy">Privacy</a>
+        </div>
       </div>
     </footer>
 
