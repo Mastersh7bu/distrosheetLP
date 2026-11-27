@@ -295,8 +295,12 @@ if (pager) {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let index = location.hash === "#use-cases" ? 1 : 0;
 
+  const dwell = 8000;
+  let timer = 0;
+
   function show(nextIndex, animate) {
-    const target = Math.max(0, Math.min(panels.length - 1, nextIndex));
+    const count = panels.length;
+    const target = ((nextIndex % count) + count) % count;
     if (animate && target === index) return;
     index = target;
     track.style.transition = animate && !reduceMotion ? "" : "none";
@@ -306,8 +310,8 @@ if (pager) {
       panel.toggleAttribute("inert", !active);
       panel.setAttribute("aria-hidden", active ? "false" : "true");
     });
-    prev.disabled = index === 0;
-    next.disabled = index === panels.length - 1;
+    prev.disabled = false;
+    next.disabled = false;
     if (!animate) {
       window.requestAnimationFrame(() => {
         track.style.transition = "";
@@ -315,15 +319,39 @@ if (pager) {
     }
   }
 
+  function waiting() {
+    return document.hidden || pager.matches(":hover") || pager.matches(":focus-within");
+  }
+
+  function arm() {
+    window.clearTimeout(timer);
+    timer = window.setTimeout(() => {
+      if (waiting()) {
+        arm();
+        return;
+      }
+      show(index + 1, true);
+      arm();
+    }, waiting() ? 1000 : dwell);
+  }
+
   function syncFromHash() {
     if (location.hash === "#use-cases") show(1, true);
     else if (location.hash === "#features") show(0, true);
+    arm();
   }
 
-  prev.addEventListener("click", () => show(index - 1, true));
-  next.addEventListener("click", () => show(index + 1, true));
+  prev.addEventListener("click", () => {
+    show(index - 1, true);
+    arm();
+  });
+  next.addEventListener("click", () => {
+    show(index + 1, true);
+    arm();
+  });
   window.addEventListener("hashchange", syncFromHash);
   show(index, false);
+  arm();
 }
 
 const mock = document.querySelector("[data-mock]");
